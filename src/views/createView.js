@@ -1,4 +1,8 @@
-{/* <section id="create-page" class="auth">
+{/* */}import { html } from "../../node_modules/lit-html/lit-html.js"
+
+
+const renderPage = () =>  html`
+ <section id="create-page" class="auth">
 <form id="create">
     <div class="container">
 
@@ -20,4 +24,9 @@
         <input class="btn submit" type="submit" value="Create Game">
     </div>
 </form>
-</section> */}
+</section>
+`;
+
+export const renderCreate = (ctx) => {
+ctx.renderMiddleware(renderPage())
+}

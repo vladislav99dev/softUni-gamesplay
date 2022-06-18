@@ -1,4 +1,8 @@
-{/* <section id="welcome-world">
+import { html } from "../../node_modules/lit-html/lit-html.js"
+
+
+const renderPage = () =>  html`
+    <section id="welcome-world">
 
 <div class="welcome-message">
     <h2>ALL new games are</h2>
@@ -8,7 +12,6 @@
 
 <div id="home-page">
     <h1>Latest Games</h1>
-
     <!-- Display div: with information about every game (if any) -->
     <div class="game">
         <div class="image-wrap">
@@ -50,4 +53,9 @@
     <!-- Display paragraph: If there is no games  -->
     <p class="no-articles">No games yet</p>
 </div>
-</section> */}
+</section>
+`;
+
+export const renderHome = (ctx) => {
+    ctx.renderMiddleware(renderPage())
+}

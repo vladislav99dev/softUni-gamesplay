@@ -1,4 +1,8 @@
-{/* <section id="catalog-page">
+import { html } from "../../node_modules/lit-html/lit-html.js"
+
+
+const renderPage = () =>  html`
+<section id="catalog-page">
 <h1>All Games</h1>
 <!-- Display div: with information about every game (if any) -->
 <div class="allGames">
@@ -30,4 +34,9 @@
 
 <!-- Display paragraph: If there is no games  -->
 <h3 class="no-articles">No articles yet</h3>
-</section> */}
+</section>
+`;
+
+export const renderCatalogue = (ctx) => {
+ctx.renderMiddleware(renderPage())
+}

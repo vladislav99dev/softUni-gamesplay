@@ -1,4 +1,8 @@
-{/* <section id="login-page" class="auth">
+import { html } from "../../node_modules/lit-html/lit-html.js"
+
+
+const renderPage = () =>  html`
+<section id="login-page" class="auth">
 <form id="login">
 
     <div class="container">
@@ -11,8 +15,13 @@
         <input type="password" id="login-password" name="password">
         <input type="submit" class="btn submit" value="Login">
         <p class="field">
-            <span>If you don't have profile click <a href="#">here</a></span>
+            <span>If you don't have profile click <a href="/register">here</a></span>
         </p>
     </div>
 </form>
-</section> */}
+</section>
+`;
+
+export const renderLogin = (ctx) => {
+ctx.renderMiddleware(renderPage())
+}

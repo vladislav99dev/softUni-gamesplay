@@ -1,4 +1,8 @@
-{/* <section id="edit-page" class="auth">
+import { html } from "../../node_modules/lit-html/lit-html.js"
+
+
+const renderPage = () =>  html`
+ <section id="edit-page" class="auth">
 <form id="edit">
     <div class="container">
 
@@ -21,4 +25,9 @@
 
     </div>
 </form>
-</section> */}
+</section> 
+`;
+
+export const renderEdit = (ctx) => {
+ctx.renderMiddleware(renderPage())
+}
