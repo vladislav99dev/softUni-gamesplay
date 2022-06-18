@@ -14,3 +14,8 @@ export const getUserData = () => {
         return false;
     }  
 }
+export const saveUserData = (data) => {
+    localStorage.setItem('email', data.email);
+    localStorage.setItem('_id', data._id);
+    localStorage.setItem('accessToken', data.accessToken);
+}

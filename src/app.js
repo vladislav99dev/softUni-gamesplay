@@ -15,6 +15,4 @@ page('/create', renderCreate);
 page('/logout', renderLogout);
 page('/catalogue', renderCatalogue)
 
-
-
 page.start();
