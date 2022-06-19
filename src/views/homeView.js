@@ -20,7 +20,7 @@ const renderPage = (ctx) => html`
 
 export const renderHome = async (ctx) => {
   let sortedGames = await getAllGames();
-  sortedGames = sortedGames.sort((a, b) => a._createdOn - b._createdOn);
+  sortedGames = sortedGames.sort((a, b) => b._createdOn - a._createdOn);
   let latestGames = sortedGames.splice(0, 3);
   ctx.games = latestGames;
   ctx.renderGameCard = renderGameCard;
