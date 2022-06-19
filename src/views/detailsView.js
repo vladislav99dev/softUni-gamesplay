@@ -1,27 +1,23 @@
-import { html } from "../../node_modules/lit-html/lit-html.js"
+import { html,nothing } from "../../node_modules/lit-html/lit-html.js"
+import { getUserData } from "../services/auth.js"
+import { getGame } from "../services/moviesRequester.js";
 
-
-const renderPage = () =>  html`
-<!--Details Page-->
+const renderPage = (ctx) =>  html`
 <section id="game-details">
     <h1>Game Details</h1>
     <div class="info-section">
 
         <div class="game-header">
-            <img class="game-img" src="images/MineCraft.png" />
-            <h1>Bright</h1>
-            <span class="levels">MaxLevel: 4</span>
-            <p class="type">Action, Crime, Fantasy</p>
+            <img class="game-img" src="${ctx.game.imageUrl}" />
+            <h1>${ctx.game.title}</h1>
+            <span class="levels">MaxLevel: ${ctx.game.title}</span>
+            <p class="type">${ctx.game.category}</p>
         </div>
 
         <p class="text">
-            Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work
-            with an Orc to find a weapon everyone is prepared to kill for. Set in a world where fantasy
-            creatures live side by side with humans. A human cop is forced
-            to work with an Orc to find a weapon everyone is prepared to kill for.
+            ${ctx.game.summary}
         </p>
 
-        <!-- Bonus ( for Guests and Users ) -->
         <div class="details-comments">
             <h2>Comments:</h2>
             <ul>
@@ -38,10 +34,16 @@ const renderPage = () =>  html`
         </div>
 
         <!-- Edit/Delete buttons ( Only for creator of this game )  -->
+        ${ctx.isUserLoggedIn._id  === ctx.game._ownerId
+        ? html`
         <div class="buttons">
-            <a href="#" class="button">Edit</a>
-            <a href="#" class="button">Delete</a>
+            <a href="edit/${ctx.game._id}" class="button">Edit</a>
+            <a href="delete/${ctx.game._id}" class="button">Delete</a>
         </div>
+        `
+        : nothing
+    }
+
     </div>
 
     <!-- Bonus -->
@@ -57,6 +59,8 @@ const renderPage = () =>  html`
 </section>
 `;
 
-export const renderDetails = (ctx) => {
-ctx.renderMiddleware(renderPage())
+export const renderDetails = async(ctx) => {
+ctx.game = await getGame(ctx.params.gameId)
+ctx.isUserLoggedIn = getUserData();
+ctx.renderMiddleware(renderPage(ctx))
 }

@@ -1,5 +1,5 @@
 import { html } from "../../node_modules/lit-html/lit-html.js";
-import { getUserData } from "../services/auth.js";
+import { getToken } from "../services/auth.js";
 
 
 let guestButtons = () => html`
@@ -23,7 +23,7 @@ export const navBar = () => html`
                 <h1><a class="home" href="/">GamesPlay</a></h1>
                 <nav>
                     <a href="/catalogue">All games</a>
-                    ${getUserData()
+                    ${getToken()
                         ? userButtons()
                         : guestButtons()
                     }

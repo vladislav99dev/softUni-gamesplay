@@ -61,11 +61,16 @@ const createHandler = async(ctx,event) => {
   event.preventDefault();
   let formData = new FormData(event.target.parentElement.parentElement);
   let data = Object.fromEntries(formData);
-  let response = await createGame(null,data);
-  console.log(response)
-  if(response.message) {
-    alert(response.message)
-  } else {
-    ctx.page.redirect('/')
-  }
-};
+  if(data.title&& data.category && data.maxLevel &&data.imageUrl && data.summary) {
+    let response = await createGame(null,data);
+    console.log(response)
+    if(response.message) {
+      alert(response.message)
+    } else {
+      ctx.page.redirect('/')
+    }
+ } else {
+    alert("All inputs Should be filled.")
+ }
+}
+

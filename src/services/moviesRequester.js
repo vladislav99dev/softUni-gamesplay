@@ -9,16 +9,15 @@ const requester = async (method, id, data) => {
   if (method === "GET") {
     if (id) {
       fetchURL = `${baseUrl}${gamesUrl}/${id}`;
-      Object.assign(options, {
-        headers: {
-          "X-Authorization": getToken(),
-        },
-      });
+      // Object.assign(options, {
+      //   headers: {
+      //     "X-Authorization": getToken(),
+      //   },
+      // });
     } else {
       fetchURL = `${baseUrl}${gamesUrl}?sortBy=_createdOn%20desc`;
     }
   } else if (method === "DELETE") {
-    console.log(fetchUrl);
     console.log(getToken());
     fetchURL = `${baseUrl}${gamesUrl}/${id}`;
     Object.assign(options, {
@@ -69,4 +68,6 @@ const requester = async (method, id, data) => {
 };
 export const getAllGames = requester.bind(null, "GET");
 export const createGame = requester.bind(null, "POST");
+export const getGame = requester.bind(null, "GET");
+
 
