@@ -15,7 +15,6 @@ const renderPage = (ctx) => html`
 
 export const renderCatalogue = async (ctx) => {
   ctx.games = await getAllGames();
-  console.log(ctx.games);
   ctx.renderGameCard = renderGameCard;
   ctx.renderMiddleware(renderPage(ctx));
 };

@@ -37,8 +37,8 @@ const renderPage = (ctx) =>  html`
         ${ctx.isUserLoggedIn._id  === ctx.game._ownerId
         ? html`
         <div class="buttons">
-            <a href="edit/${ctx.game._id}" class="button">Edit</a>
-            <a href="delete/${ctx.game._id}" class="button">Delete</a>
+            <a href="/edit/${ctx.game._id}" class="button">Edit</a>
+            <a href="/delete/${ctx.game._id}" class="button">Delete</a>
         </div>
         `
         : nothing

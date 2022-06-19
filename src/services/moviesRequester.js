@@ -52,8 +52,10 @@ const requester = async (method, id, data) => {
       },
       body: JSON.stringify({
         title: data.title,
-        description: data.description,
-        img: data.imageUrl,
+        category: data.category,
+        maxLevel: data.maxLevel,
+        imageUrl: data.imageUrl,
+        summary: data.summary
       }),
     });
   }
@@ -69,5 +71,6 @@ const requester = async (method, id, data) => {
 export const getAllGames = requester.bind(null, "GET");
 export const createGame = requester.bind(null, "POST");
 export const getGame = requester.bind(null, "GET");
+export const updateGame = requester.bind(null, "PUT");
 
 
